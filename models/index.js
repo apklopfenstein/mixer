@@ -3,7 +3,7 @@ const Project = require('./Project');
 const Song = require('./Song');
 const Comment = require('./Comment');
 
-User.belongsToMany(Project, {
+User.hasMany(Project, {
     foreignKey: 'user_id'
 });
 
@@ -19,8 +19,8 @@ Project.hasMany(Song, {
     foreignKey: 'project_id'
 });
 
-Project.belongsToMany(User, {
-    foreignKey: 'project_id'
+Project.belongsTo(User, {
+    foreignKey: 'user_id'
 });
 
 Comment.belongsTo(User, {
@@ -32,7 +32,7 @@ Comment.belongsTo(Project, {
 });
 
 Song.belongsTo(Project, {
-    foreignKey: 'song_id'
+    foreignKey: 'project_id'
 });
 
 module.exports = { User, Project, Song, Comment };

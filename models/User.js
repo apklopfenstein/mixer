@@ -1,10 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const passport = require('passport');
 
-class User extends Model {
-
-}
+class User extends Model {}
 
 User.init(
     {
@@ -37,9 +34,9 @@ User.init(
     {
         sequelize,
         timestamps: false,
-        freezeTableNames: true,
+        freezeTableName: true,
         underscored: true,
-        modelUser: 'user'
+        modelName: 'user',
     }
 );
 
