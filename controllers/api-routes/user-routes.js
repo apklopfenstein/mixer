@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const {User, Project, Comment} = require('../../models');
 
+
 // All users
 router.get('/', (req, res) => {
     User.findAll({
