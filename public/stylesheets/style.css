@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+.hero {
+    margin-top: 100px;
+}
+.new_form {
+    border: 1px black solid;
+    padding: 5px;
+}
