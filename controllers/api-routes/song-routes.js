@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const {Song, Project, Comment} = require('../../models');
+const { Song, Project, Comment } = require('../../models');
 
 
 // All songs
 router.get('/', (req, res) => {
     Song.findAll({
-        })
-        .then(dbSongData=> res.json(dbSongData))
+    })
+        .then(dbSongData => res.json(dbSongData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
             },
         ]
     })
-    .then(dbSongData=> res.json(dbSongData))
+        .then(dbSongData => res.json(dbSongData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -36,17 +36,31 @@ router.get('/:id', (req, res) => {
 //create song
 router.post('/', (req, res) => {
     Song.create({
-            title: req.body.title,
-            description: req.body.description,
-            project_id: req.body.project_id,
-            song_url: req.body.song_url
-        })
-        .then(dbSongData=> res.json(dbSongData))
+        title: req.body.title,
+        description: req.body.description,
+        project_id: req.body.project_id,
+        song_url: req.body.song_url
+    })
+        .then(dbSongData => res.json(dbSongData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
+})
+
+//delete song
+router.delete('/:id', (req, res) => {
+    Song.destroy({
+        where: {
+            id: req.params.id
+        }
     })
+        .then(dbSongData => res.json(dbSongData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+})
 
 
-module.exports= router
+module.exports = router
