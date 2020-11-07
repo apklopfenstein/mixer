@@ -25,6 +25,9 @@ Song.init (
                 model: 'project',
                 key: 'id'
             }
+        },
+        song_url: {
+            type: DataTypes.STRING
         }
     },
     {
