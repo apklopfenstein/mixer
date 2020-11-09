@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echo Mixer</title>
     <link rel="stylesheet" href="./public/stylesheets/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/3c962b9d11.js" crossorigin="anonymous"></script>
 </head>
 
@@ -17,32 +19,31 @@
     <nav>
         <div class="nav-wrapper light-blue">
             <a href="#!" class="brand-logo">Mixr</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="#"><i class="fas fa-compact-disc"></i> My Projects</a></li>
             </ul>
         </div>
     </nav>
 
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="#">My Projects</a></li>
-    </ul>
-
-    <div class="row hero">
-        <div class="col s1"></div>
-        <div class="col s5">
+    <section class="row hero valign-wrapper">
+        <div class="col s4 right-align">
             <h2>Collaborate and manage your musical projects!<i class="fa fa-music"></i></h2>
         </div>
-        <form class="col s5 new_form">
+        <form class="col s6 new_form">
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="e.g. John" id="first_name" type="text" class="validate">
+                    <input id="first_name" type="text" class="validate">
                     <label for="first_name">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input placeholder="e.g. Doe"
-                    id="last_name" type="text" class="validate">
+                    <input id="last_name" type="text" class="validate">
                     <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="username" type="text" class="validate">
+                    <label for="username">Username</label>
                 </div>
             </div>
 
@@ -54,22 +55,47 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
-                    <label for="email">Email</label>
+                    <input id="project_title" type="text" class="validate">
+                    <label for="project_title">Project Title</label>
                 </div>
             </div>
-            <div class="row ">
-                <a href="#">Existing User <i class="far fa-check-circle"></i></a>
-                <button class="btn waves-effect waves-light right" type="submit" name="action">Submit</i>
+            <div class="row valign-wrapper">
+                <div class="col s4"><a data-target="modal1" class="modal-trigger">Existing User</a></div>
 
-                    <i class="material-icons right">send <i class="fa fa-play-circle"></i>
-                </button>
+
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <form>
+                            <div class="input-field row">
+                                <input id="username" type="text" class="validate">
+                                <label for="first_name">Username</label>
+                            </div>
+                            <div class="input-field row">
+                                <input id="password" type="text" class="validate">
+                                <label for="last_name">Password</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Login</a>
+                    </div>
+                </div>
+                <div class="col s6 offset-s4 left">
+                    <button class="btn waves-effect waves-light right" type="submit" name="action">New Project
+                    </button>
+                </div>
             </div>
         </form>
-    </div>
+    </section>
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="public/javascript/index.js"></script>
 </body>
 
-<script src="public/javascript/index.js"></script>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>Ï
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </html>
