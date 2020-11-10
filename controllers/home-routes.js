@@ -1,8 +1,18 @@
 const router = require('express').Router();
 const { Project, User, Comment } = require('../models');
 
+router.get('/', (req,res)=>{
+    res.render('homepage')
+})
+
+router.get('/newsong', (req,res)=>{
+    res.render('newsong')
+})
+
+
+
 // All projects
-router.get('/', (req, res) => {
+router.get('/projects', (req, res) => {
     Project.findAll({
         attributes: [
             'id',
@@ -26,7 +36,7 @@ router.get('/', (req, res) => {
         const projects = dbProjectData.map(project => project.get({
             plain: true
         }));
-        res.render('homepage', {
+        res.render('projects', {
             projects,
             loggedIn: req.session.loggedIn
         });
