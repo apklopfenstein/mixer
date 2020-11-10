@@ -1,8 +1,7 @@
 const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
-// const path = require('path');
-// const passport = require('passport');
+const path = require('path')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -33,12 +32,10 @@ app.use(session(sess));
 //end session setup
 
 //make styles and html available to server
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(passport.initialized());
-// app.use(passport.session());
 
 // turn on routes
 app.use(routes);

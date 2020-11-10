@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User, Comment } = require('../../models');
+const { Project, User } = require('../../models');
 
 // Get all projects
 router.get('/', (req, res) => {
@@ -7,20 +7,6 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'name'
-        ],
-        include: [
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'project_id', 'user_id'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
-            },
-            {
-                model: User,
-                attributes: ['username']
-            }
         ]
     })
     .then(dbProjectData => res.json(dbProjectData))
@@ -58,6 +44,10 @@ router.get('/:id', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     });
+});
+
+// Get all songs in a project
+router.get('/:id/songs', (req, res) => {
 });
 
 // Create a project
