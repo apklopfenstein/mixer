@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    color:white;
+}
+
+.brand-logo {
+    padding-left: 15px !important;
+}
+
+body {
+    background-image: url(../../assets/images/mixer-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: 80%;
+}
+
+.hero {
+    color: white;
+    margin: auto !important;
+    padding-top: 150px
+}
+
+.new_form {
+    border: 1px black solid;
+    padding: 20px !important;
+    background-color: white;
+    border-radius: 15px;
+    width: 40% !important;
+    margin: auto !important;
+}
+
+.modal {
+    color: black !important;
+    background-color: lightgray;
+}
+
+#modal1 {
+    transform: translateY(50%) scaleX(1) !important;
+}
