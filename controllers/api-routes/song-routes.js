@@ -25,6 +25,18 @@ router.get('/:id', (req, res) => {
                 model: Project,
                 attributes: ['id', 'name']
             },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'project_id', 'user_id'],
+                include: {
+                  model: User,
+                  attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }
         ]
     })
         .then(dbSongData => res.json(dbSongData))
