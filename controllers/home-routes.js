@@ -50,6 +50,9 @@ router.get('/projects', (req, res) => {
         const projects = dbProjectData.map(project => project.get({
             plain: true
         }));
+
+        console.log(projects);
+
         res.render('projects', {
             projects,
             loggedIn: req.session.loggedIn

@@ -67,7 +67,7 @@ router.post('/', withAuth, (req, res) => {
         name: req.body.name,
         user_id: req.session.user_id
     })
-    .then(dbProjectData => res.json(dbProjectData))
+    .then(dbProjectData => res.redirect('/projects'))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
