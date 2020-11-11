@@ -9,6 +9,10 @@ router.get('/newsong', (req,res)=>{
     res.render('newsong')
 })
 
+router.get('/project-select', (req,res)=>{
+    res.render('project-select')
+})
+
 
 
 // All projects

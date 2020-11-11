@@ -1,6 +1,6 @@
 console.log("working");
 
-$("#add-song").on("click", ()=>{
-    console.log("button working"); 
-    $(location).attr("href", "/newsong");
+$("#projectTest").on("click", ()=>{
+    $(location).attr("href", "/project-select")
 })
+
