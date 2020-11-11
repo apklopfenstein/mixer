@@ -28,6 +28,10 @@ Song.init (
         },
         song_url: {
             type: DataTypes.STRING
+        },
+        s3_object_key: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     },
     {
