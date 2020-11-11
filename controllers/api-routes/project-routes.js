@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Project, User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // Get all projects
 router.get('/', (req, res) => {
@@ -61,7 +62,7 @@ router.get('/:id/songs', (req, res) => {
 });
 
 // Create a project
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Project.create({
         name: req.body.name,
         user_id: req.session.user_id
