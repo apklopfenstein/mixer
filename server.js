@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
+const fileUpload = require('express-fileupload');
 const path = require('path')
 
 const app = express();
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(fileUpload());
 
 // turn on routes
 app.use(routes);
