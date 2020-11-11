@@ -1,38 +1,39 @@
- <form class="col s6 new_form" method="POST" action="/api/songs" enctype="multipart/form-data">
-           
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="title" name="title" type="text" class="validate">
-                    <label for="title">Title</label>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="description" name="description" type="text" class="validate">
-                    <label for="description">Description</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="song" name="song" type="file" class="validate">
-                    <label for="song">song url</label>
-                </div>
-            </div>
-            <div class="row valign-wrapper">
-                
-                <div class="col s6 offset-s4 left">
-                    <button class="btn waves-effect waves-light right" id="newSong-btn" type="submit" name="action">Add New Song
-                    </button>
-                </div>
-                <div>
-                </div>
+<div class="container">
+    <form class="col s6 new_form" method="POST" action="/api/songs" enctype="multipart/form-data">
     
- </form>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="title" name="title" type="text" class="validate">
+                <label for="title">Title</label>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="description" name="description" type="text" class="validate">
+                <label for="description">Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="song" name="song" type="file" class="validate">
+            </div>
+        </div>
+        <div class="row valign-wrapper">
+            <div class="col s2 offset-s8 right">
+                <button class="btn waves-effect waves-light right" href="/projects">Cancel
+                </button>
+    
+            </div>
+            <div class="col s2 right">
+                <button class="btn waves-effect waves-light right" id="newSong-btn" type="submit" name="action">Add New Song
+                </button>
+    
+            </div>
+    
+        </div>
+    </form>
 </div>
 
- <button id="back-btn">back to project</button>
- 
-
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
- <script src="javascript/newsong.js"></script>
+<script src="javascript/newsong.js"></script>

@@ -4,6 +4,9 @@ const { Project, User } = require('../../models');
 // Get all projects
 router.get('/', (req, res) => {
     Project.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
         attributes: [
             'id',
             'name'
