@@ -1,5 +1,9 @@
-$(document).ready(function () {
-    $('.modal').modal();
+
+
+
+$(function () {
+
+    $(".modal").modal();
     console.log("working?");
     
 });
