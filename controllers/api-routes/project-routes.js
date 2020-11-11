@@ -1,12 +1,10 @@
 const router = require('express').Router();
 const { Project, User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // Get all projects
 router.get('/', (req, res) => {
     Project.findAll({
-        where: {
-            user_id: req.session.user_id
-        },
         attributes: [
             'id',
             'name'
@@ -51,15 +49,25 @@ router.get('/:id', (req, res) => {
 
 // Get all songs in a project
 router.get('/:id/songs', (req, res) => {
+    Song.findAll({
+        where: {
+            project_id: req.body.project_id
+        }
+    })
+        .then(dbSongData => res.json(dbSongData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // Create a project
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Project.create({
         name: req.body.name,
         user_id: req.session.user_id
     })
-    .then(dbProjectData => res.json(dbProjectData))
+    .then(dbProjectData => res.redirect('/projects'))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);

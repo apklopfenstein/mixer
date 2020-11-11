@@ -1,18 +1,5 @@
-
-
-
 $(function () {
-
     $(".modal").modal();
-    console.log("working?");
-    
+
+    $('#error-modal').modal('open');
 });
-
-
-
-
- console.log("connected?");
- 
-
-
-

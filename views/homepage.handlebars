@@ -12,7 +12,7 @@
     <div class="col s4 right-align">
         <h2>Collaborate and manage your musical projects!</h2>
     </div>
-    <form method="POST" action="/api/users" enctype="multipart/form-data" class="col s6 new_form">
+    <form method="POST" action="/api/users" class="col s6 new_form">
         <div class="row">
             <div class="input-field col s12">
                 <input name="email" id="newemail" type="text" class="validate">
@@ -44,23 +44,37 @@
 
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
+        <form method="POST" action="/api/users/login">
+            <div class="modal-content">
+                <div class="input-field row">
+                    <input name="username" id="username" type="text" class="validate">
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-field row">
+                    <input name="password" id="password" type="text" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                <button type="submit" class="modal-close waves-effect waves-green btn-flat">Login</button>
+            </div>
+        </form>
+    </div>
+    <!-- Error Modal -->
+    {{#if error}}
+    <div id="error-modal" class="modal">
         <div class="modal-content">
-            <form>
-                <div class="input-field row">
-                    <input id="username" type="text" class="validate">
-                    <label for="first_name">Username</label>
-                </div>
-                <div class="input-field row">
-                    <input id="password" type="text" class="validate">
-                    <label for="last_name">Password</label>
-                </div>
-            </form>
+            <h4>Error</h4>
+            <p>
+                {{ error }}
+            </p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Login</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Okay</a>
         </div>
     </div>
+    {{/if}}
 </section>
 
 
