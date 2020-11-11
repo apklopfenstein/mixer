@@ -2,7 +2,13 @@ const router = require('express').Router();
 const { Project, User, Comment } = require('../models');
 
 router.get('/', (req,res)=>{
-    res.render('homepage')
+    const data = {};
+
+    if (req.query.error) {
+        data.error = req.query.error;
+    }
+
+    res.render('homepage', data);
 })
 
 router.get('/newsong', (req,res)=>{
@@ -18,23 +24,27 @@ router.get('/project-select', (req,res)=>{
 // All projects
 router.get('/projects', (req, res) => {
     Project.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
         attributes: [
             'id',
             'name'
         ],
-        include: [{
-            model: Comment,
-            attributes: ['id', 'comment_text', 'project_id', 'user_id'],
-            include: {
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'project_id', 'user_id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
                 model: User,
                 attributes: ['username']
             }
-        },
-        {
-            model: User,
-            attributes: ['username']
-        }
-    ]
+        ]
     })
     .then(dbProjectData => {
         const projects = dbProjectData.map(project => project.get({
