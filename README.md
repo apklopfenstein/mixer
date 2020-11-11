@@ -1,31 +1,32 @@
 # echo
 
-<!-- projects page -->
-'add member' button functionality and add to db   
- form    
- form handler    
- add association to db  
-redirect to empty projects page
-
-  
- delete project button    
- functionality    
- delete from db
-
- <!-- project-select page (songs page) -->
-
-  make song editable
-   delete song button   
-    functionality   
-     delete from db
-
-
- <!-- homepage -->
+<!-- homepage -->
  form submit handler
     add all info to db
     redirect to projects page 
 login handling
     redirect to projects page w/ existing projects loaded
+
+<!-- projects page -->
+('add member' button functionality and add to db   
+ form    
+ form handler    
+ add association to db  
+redirect to empty projects page)
+
+  
+ (delete project button    
+ functionality    
+ delete from db)
+
+ <!-- project-select page (songs page) -->
+
+  make song card editable:
+  edit comments, title, add mp3
+
+   (delete song button   
+    functionality   
+     delete from db)
 
 
 <!-- newsong page -->
