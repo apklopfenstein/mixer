@@ -48,6 +48,8 @@ router.get('/:id', (req, res) => {
 
 //create song
 router.post('/', (req, res) => {
+    console.log("song post", req.files);
+    
     const s3 = new S3();
     const params = {
         ACL: 'public-read',
