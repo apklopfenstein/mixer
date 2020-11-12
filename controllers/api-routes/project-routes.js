@@ -65,4 +65,18 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
+//delete project
+router.delete('/:id', (req, res) => {
+    Project.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(dbProjectData => res.json(dbProjectData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+})
+
 module.exports = router;

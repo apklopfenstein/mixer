@@ -1,10 +1,11 @@
 # echo
 <!--MAIN ISSUES-->
-can't recall mp3's from aws to render to songs page
+
 in Song.js lines 32-35 the s3 key causes error and songs page to not load
 make sure it works on heroku
 seed file
 responsiveness
+design
 
 
 <!-- homepage -->

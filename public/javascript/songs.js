@@ -22,14 +22,10 @@ async function deleteSongDb(songID) {
             'Content-Type': 'application/json'
         }
     })
-
     if (response.ok) {
-
         console.log("cool");
-
     } else {
         console.log(response);
-
         alert(response.statusText);
     }
 }

@@ -32,6 +32,9 @@
             <div class="card grey lighten-3">
                 <div class="card-content black-text">
                     <span class="card-title">{{ this.name }}</span>
+                    <div class="card-action left-align">
+                        <button class="delete-project" id="project-{{this.id}}">delete</button>
+                    </div>
                     <div class="card-action right-align">
                         <a href="/projects/{{ this.id }}">Details</a>
                     </div>
