@@ -1,5 +1,7 @@
 # echo
 
+create user not working
+
 <!-- homepage -->
 
 
@@ -25,7 +27,7 @@ redirect to empty projects page)
 
  <!-- project-select page (songs page) -->
 -bring up songs according to project using handlebars
-
+-make songs clickable, bring up modal?
 
   (make song card editable:
   edit comments, title, add mp3)

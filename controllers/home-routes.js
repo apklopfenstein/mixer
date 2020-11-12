@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { Project, User, Comment } = require('../models');
+const { Project, User, Comment, Song } = require('../models');
 
-router.get('/', (req,res)=>{
+router.get('/', (req, res) => {
     const data = {};
 
     if (req.query.error) {
@@ -11,12 +11,27 @@ router.get('/', (req,res)=>{
     res.render('homepage', data);
 })
 
-router.get('/newsong', (req,res)=>{
+router.get('/newsong', (req, res) => {
     res.render('newsong')
 })
 
-router.get('/project-select', (req,res)=>{
-    res.render('project-select')
+//all songs in a given project
+router.get('/project-select', (req, res) => {
+    Song.findAll({
+        where: {
+            project_id: 1
+        }
+    })
+        .then(dbSongData => {
+            const songs = dbSongData.map(song => song.get({
+                plain: true
+            }));
+            res.render('project-select', {songs})
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 })
 
 
@@ -46,22 +61,22 @@ router.get('/projects', (req, res) => {
             }
         ]
     })
-    .then(dbProjectData => {
-        const projects = dbProjectData.map(project => project.get({
-            plain: true
-        }));
+        .then(dbProjectData => {
+            const projects = dbProjectData.map(project => project.get({
+                plain: true
+            }));
 
-        console.log(projects);
+            console.log(projects);
 
-        res.render('projects', {
-            projects,
-            loggedIn: req.session.loggedIn
+            res.render('projects', {
+                projects,
+                loggedIn: req.session.loggedIn
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
         });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
 });
 
 // Login
@@ -99,23 +114,23 @@ router.get('/project/:id', (req, res) => {
             }
         ]
     })
-    .then(dbProjectData => {
-        if(!dbProjectData) {
-            res.status(404).json({ message: 'No project found with this id '});
-            return;
-        }
+        .then(dbProjectData => {
+            if (!dbProjectData) {
+                res.status(404).json({ message: 'No project found with this id ' });
+                return;
+            }
 
-        const project = dbProjectData.get({ plain: true });
+            const project = dbProjectData.get({ plain: true });
 
-        res.render('single-project', {
-            project,
-            loggedIn: req.session.loggedIn
+            res.render('single-project', {
+                project,
+                loggedIn: req.session.loggedIn
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
         });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
 });
 
 module.exports = router;

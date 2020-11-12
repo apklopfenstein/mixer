@@ -13,25 +13,37 @@
 
 <section>
     <div class="row">
-        <h2 class="white-text center">{{title}}My Songs</h2>
+        <h2 class="white-text center">My Songs</h2>
     </div>
 
 </section>
+
 <!--hardcoded song-->
+
 <section id="projectTest">
+     <div class="col s1 m1 l1 valign-wrapper btn-wrapper">
+                <div class="card grey lighten-3">
+                    <a class="btn-floating btn-large waves-effect waves-light red add-btn" id="add-song"><i
+                class="material-icons">add</i></a>
+                </div>
+            </div>
+        </div>
+    {{#each songs}}
     <div class="row">
         <div class="card">
             <div class="col s12 m6 l3">
                 <div class="card grey lighten-3">
                     <div class="card-content black-text">
-                        <span class="card-title">{{song-title}} Song 1</span>
-                        <p>{{{song-description}}} </p>
+                        <span class="card-title">{{this.title}}</span>
+                        <p>{{this.description}} </p>
+                        <p><a href="{{this.song_url}}">listen</a></p>
+                        <p>{{this.song_url}}</p>
                     </div>
 
                     <div class="card-action right-align">
                         <a data-target="modal-detail" class="modal-trigger">Details</a>
                     </div>
-
+<!--modal-->
                     <div id="modal-detail" class="modal modal-detail">
                         <div class="modal-content">
                             <div class="row">
@@ -66,15 +78,10 @@
                 </div>
             </div>
         </div>
-        <div class="col s1 m1 l1 valign-wrapper btn-wrapper">
-                <div class="card grey lighten-3">
-                    <a class="btn-floating btn-large waves-effect waves-light red add-btn" id="add-song"><i
-                class="material-icons">add</i></a>
-                </div>
-            </div>
-        </div>
+        {{/each}}
         
     </div>
+    
 </section>
 
 

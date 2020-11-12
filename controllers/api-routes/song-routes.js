@@ -66,7 +66,7 @@ router.post('/', (req, res) => {
             song_url: data.Location,
             s3_object_key: data.Key
         })
-            .then(dbSongData => res.json(dbSongData))
+            .then(dbSongData => res.redirect('/project-select'))
             .catch(err => {
                 console.log(err);
                 res.status(500).json(err);

@@ -35,6 +35,7 @@ if (title && description) {
       body: JSON.stringify({
         title,
         description,
+        project_id
         
       }),
       headers: {
@@ -43,7 +44,7 @@ if (title && description) {
     });
   
     if (response.ok) {
-    //   document.location.reload();
+    
     console.log("cool");
     
     } else {
