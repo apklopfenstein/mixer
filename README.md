@@ -20,7 +20,7 @@ The purpose of Mixr is to give musicians a project management system to organize
   - Bcrypt
   - Express
   - Express-Session
-  - Express-Upload
+  - Express-FileUpload
 
 ## Links
 [GitHub Repo](https://github.com/redteam5/mixer)<br>
