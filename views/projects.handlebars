@@ -25,14 +25,26 @@
     </div>
 </section>
 
-<ul class="project-list">
-    {{#each projects}}
-        <li>{{ this.name }}</li>
-    {{else}}
+<div class="row">
+    <ul class="project-list">
+        {{#each projects}}
+        <li class="col s12 m6 l3">
+            <div class="card grey lighten-3">
+                <div class="card-content black-text">
+                    <span class="card-title">{{ this.name }}</span>
+                    <div class="card-action right-align">
+                        <a href="/projects/{{ this.id }}">Details</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {{else}}
         <p>No projects have been created yet.</p>
-    {{/each}}
-</ul>
+        {{/each}}
+    </ul>
+</div>
 
+{{!-- New Project Modal --}}
 <div id="new-project-modal" class="modal">
     <form method="POST" action="/api/projects">
         <div class="modal-content">

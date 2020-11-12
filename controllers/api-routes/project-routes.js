@@ -33,6 +33,9 @@ router.get('/:id', (req, res) => {
             {
                 model: User,
                 attributes: ['username']
+            },
+            {
+                model: Song
             }
         ]
     })
@@ -47,21 +50,6 @@ router.get('/:id', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     });
-});
-
-// Get all songs in a project
-router.get('/:id/songs', (req, res) => {
-    Song.findAll({
-        where: {
-            project_id: req.body.project_id
-        }
-        
-    })
-        .then(dbSongData => res.json(dbSongData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
 });
 
 // Create a project
