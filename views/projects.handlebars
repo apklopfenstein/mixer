@@ -28,16 +28,16 @@
 <div class="row">
     <ul class="project-list">
         {{#each projects}}
-        <li class="col s12 m6 l3">
+        <li class="col s12 m6 l4">
             <div class="card grey lighten-3">
                 <div class="card-content black-text">
                     <span class="card-title">{{ this.name }}</span>
-                    <div class="card-action left-align">
-                        <button class="delete-project" id="project-{{this.id}}">delete</button>
+                    
+                    <div class="card-action ">
+                        <a class="delete-btn left-align" id="project-{{this.id}}">delete</a>
+                        <a href="/projects/{{ this.id }}" class="right-align">Details</a>
                     </div>
-                    <div class="card-action right-align">
-                        <a href="/projects/{{ this.id }}">Details</a>
-                    </div>
+                    
                 </div>
             </div>
         </li>

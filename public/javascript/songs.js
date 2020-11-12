@@ -1,7 +1,9 @@
+//brings up modal when 'details' is clicked
 $(() => {
     $('.modal').modal();
 });
 
+//delete button listener
 $(".delete-song").on("click", function () {
     var fullId = $(this).attr("id").split("-")
     var songID = fullId[1]
@@ -13,6 +15,7 @@ $(".delete-song").on("click", function () {
     }
 })
 
+//deletes song from db via api
 async function deleteSongDb(songID) {
 
     const response = await fetch(`/api/songs/${songID}`, {
@@ -29,4 +32,5 @@ async function deleteSongDb(songID) {
         alert(response.statusText);
     }
 }
+
 

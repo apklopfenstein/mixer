@@ -51,3 +51,10 @@ body {
     /* center vertically */
     padding-top: 25%;
 }
+
+.delete-btn {
+    color:rgb(228, 170, 170) !important;
+    cursor: pointer;
+    
+    
+}

@@ -29,20 +29,18 @@
     {{#each project.songs}}
     <div class="row">
         <div class="card">
-            <div class="col s12 m6 l3">
+            <div class="col s12 m6 l4">
                 <div class="card grey lighten-3">
                     <div class="card-content black-text">
-                        <span class="card-title">{{this.title}}</span>
+                        <span class="card-title title">{{this.title}}</span>
                         <p>{{this.description}} </p>
                         <audio controls>
                             <source src={{this.song_url}} type="audio/ogg">
                         </audio>
                     </div>
-                    <div class="card-action left-align">
-                        <button class="delete-song" id="song-{{this.id}}">delete</button>
-                    </div>
-                    <div class="card-action right-align">
-                        <a data-target="modal-detail" class="modal-trigger">Details</a>
+                    <div class="card-action">
+                        <a class="delete-btn left-align" id="song-{{this.id}}">delete</a>  
+                        <a data-target="modal-detail" class="modal-trigger right-align">Details</a>
                     </div>
                     <!--modal-->
                     <div id="modal-detail" class="modal modal-detail">
