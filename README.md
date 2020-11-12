@@ -1,11 +1,18 @@
 # echo
 <!--MAIN ISSUES-->
 
-in Song.js lines 32-35 the s3 key causes error and songs page to not load
-make sure it works on heroku
-seed file
-responsiveness
-design
+MAIN ISSUES
+-make sure it works on heroku
+-seed file
+-responsiveness (especially on landing page)
+-card design cleanup
+-make a readme
+-in Song.js lines 32-35 the s3 key causes error and songs page to not load(but it works without it...)
+
+tasks and features if we get to them:
+-refactoringgg
+-was thinking we could repurpose the 'details' button on songs page to be 'notepad', and it brings up a text box that can be edited, with 'save changes' and 'cancel' at bottom of modal. would go in the comments route of the db that we didn't get to
+
 
 
 <!-- homepage -->
@@ -34,12 +41,6 @@ redirect to empty projects page)
 
   (make song card editable:
   edit comments, title, add mp3)
-
-   (delete song button   
-    functionality   
-     delete from db)
-
-
 
 <!-- newsong page -->
 
