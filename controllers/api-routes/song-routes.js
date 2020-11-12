@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         });
 });
 
-//one song
+// One song
 router.get('/:id', (req, res) => {
     Song.findOne({
         where: {
@@ -46,8 +46,8 @@ router.get('/:id', (req, res) => {
         });
 })
 
-//create song
-router.post('/', (req, res) => {
+// Create song
+router.post('/', (req, res) => {    
     const s3 = new S3();
     const params = {
         ACL: 'public-read',
@@ -56,15 +56,15 @@ router.post('/', (req, res) => {
         Body: req.files.song.data
     };
     s3.upload(params, function(err, data) {
-        console.log(data.Location);
+        console.log(req);
         Song.create({
             title: req.body.title,
             description: req.body.description,
-            project_id: req.body.project_id,
+            project_id: req.body.projectId,
             song_url: data.Location,
-            s3_object_key: data.Key
+            s3_object_key: data.key
         })
-            .then(dbSongData => res.json(dbSongData))
+            .then(dbSongData => res.redirect('/projects/' + req.body.projectId))
             .catch(err => {
                 console.log(err);
                 res.status(500).json(err);
@@ -72,7 +72,7 @@ router.post('/', (req, res) => {
     });
 })
 
-//delete song
+// Delete song
 router.delete('/:id', (req, res) => {
     Song.destroy({
         where: {

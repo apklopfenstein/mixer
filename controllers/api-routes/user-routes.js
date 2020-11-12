@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const {User, Project, Comment} = require('../../models');
 
-
 // All users
 router.get('/', (req, res) => {
     User.findAll({
@@ -14,6 +13,18 @@ router.get('/', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
+});
+
+// Logout user
+router.get('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.redirect('/');
+        });
+    }
+    else {
+        res.status(404).end();
+    }
 });
 
 // One user
@@ -68,7 +79,7 @@ router.post('/', (req, res) => {
               req.session.username = dbUserData.username;
               req.session.loggedIn = true;
           
-              res.json(dbUserData);
+              res.redirect('/projects');
         });
     });
 });
@@ -77,17 +88,17 @@ router.post('/', (req, res) => {
 router.post('/login', (req, res) => {
     User.findOne({
         where: {
-            email: req.body.email
+            username: req.body.username
         }
     }).then(dbUserData => {
         if (!dbUserData) {
-            res.status(400).json({ message: 'No user with that email address!' });
+            res.redirect('/?error=' + encodeURIComponent('That username does not exist.'));
             return;
         }
 
         const validPassword = dbUserData.checkPassword(req.body.password);
         if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect password!' });
+            res.redirect('/?error=' + encodeURIComponent('Invalid password!'));
             return;
         }
 
@@ -96,23 +107,9 @@ router.post('/login', (req, res) => {
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
 
-            res.json({ user: dbUserData, message: 'You are now logged in!' });
+            res.redirect('/projects');
         });
     });
-});
-
-// Logout user
-router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
-        req.session.destroy(() => {
-            res.status(204).end();
-            console.log("you are logged out");
-            
-        });
-    }
-    else {
-        res.status(404).end();
-    }
 });
 
 module.exports = router;

@@ -1,0 +1,95 @@
+<!-- <h1>{{ title }} </h1> -->
+
+<nav>
+    <div class="nav-wrapper light-blue">
+        <a href="/" class="brand-logo">Mixr</a>
+        {{#if data.loggedIn}}
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/projects">My Projects</a></li>
+            <li><a href="/api/users/logout" type="click">logout</a></li>
+        </ul>
+        {{/if}}
+    </div>
+</nav>
+
+<section>
+    <div class="container">
+        <div class="row hero">
+            <div class="col s12 m6">
+                <h2>Collaborate and manage your musical projects!</h2>
+            </div>
+            <div class="col s12 m6 new_form">
+                <form method="POST" action="/api/users">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="username" id="newusername" type="text" class="validate">
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="password" id="newpassword" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="email" id="newemail" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col s6"><a data-target="modal1" class="modal-trigger">Existing User</a></div>
+                        <div class="col s6 right">
+                            <button class="btn waves-effect waves-light right" type="submit" name="action">Create
+                                Account
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <form method="POST" action="/api/users/login">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input name="username" id="username" type="text" class="validate">
+                                <label for="username">Username</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input name="password" id="password" type="password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                        <button type="submit" class="modal-close waves-effect waves-green btn-flat">Login</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Error Modal -->
+            {{#if error}}
+            <div id="error-modal" class="modal">
+                <div class="modal-content">
+                    <h4>Error</h4>
+                    <p>
+                        {{ error }}
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Okay</a>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="/javascript/index.js"></script>

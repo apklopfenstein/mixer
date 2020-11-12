@@ -1,0 +1,78 @@
+<!-- <h1>{{ title }} </h1> -->
+
+<nav>
+    <div class="nav-wrapper light-blue">
+        <a href="/" class="brand-logo">Mixr</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/projects">My Projects</a></li>
+            <li><a href="/api/users/logout" type="click">logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section>
+    <div class="row">
+        <h2 class="white-text center">My Songs</h2>
+    </div>
+</section>
+
+<section id="projectTest">
+    <!--dynamically created songs-->
+    {{#each project.songs}}
+    <div class="row">
+        <div class="card">
+            <div class="col s12 m6 l4">
+                <div class="card grey lighten-3">
+                    <div class="card-content black-text">
+                        <span class="card-title title">{{this.title}}</span>
+                        <p>{{this.description}} </p>
+                        <audio class="audio" controls>
+                            <source src={{this.song_url}} type="audio/ogg">
+                        </audio>
+                    </div>
+                    <div class="card-action right-align">
+                        <a class="delete-song left" id="song-{{this.id}}">delete</a>
+                        <a data-target="modal-detail" class="modal-trigger">Details</a>
+                    </div>
+                    <!--modal-->
+                    <div id="modal-detail" class="modal modal-detail">
+                        <div class="modal-content">
+                            <div class="row">
+                                <h5>{{{song-title}}}</h5>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m4 l3">
+                                    <div class="card">
+                                        <div class="card-image">
+                                            <img src="./assets/images/stock-head.jpg">
+                                        </div>
+                                        <div class="card-content">
+                                            <span class="card-title black-text">{{name}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h5>{{{song-desciption}}}</h5>
+                            </div>
+                            <div class="row">
+                                <h5>{{{comments}}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+        <div class="add-btn">
+            <a class="btn-floating btn-large waves-effect waves-light red add-btn"
+                href="/projects/{{ project.id }}/new-song">
+                <i class="material-icons">add</i>
+            </a>
+        </div>
+</section>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="/javascript/songs.js"></script>

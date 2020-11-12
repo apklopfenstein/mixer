@@ -1,0 +1,64 @@
+<!-- <h1>{{ title }} </h1> -->
+
+<nav>
+    <div class="nav-wrapper light-blue">
+        <a href="/" class="brand-logo">Mixr</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/api/users/logout" type="click">logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section>
+    <div class="row">
+        <h2 class="white-text center">My Projects</h2>
+    </div>
+</section>
+
+
+    <div class="row">
+        {{#each projects}}
+        <div class="col s12 m6 l3">
+            <div class="card grey lighten-3">
+                <div class="card-content black-text">
+                    <span class="card-title">{{ this.name }}</span>
+                    <div class="row">
+                        <div class="card-action">
+                            <a class="delete-project " id="project-{{this.id}}">delete</a>
+                            <a class="right" href="/projects/{{ this.id }}">Details</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <h2 class="white-text center">No projects have been created yet.</h2>
+        {{/each}}
+    </div>
+
+
+{{!-- New Project Modal --}}
+<div id="new-project-modal" class="modal">
+    <form name="project-form" method="POST" action="/api/projects">
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Project Name" name="name" id="project-name" type="text" class="validate"></input>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="modal-close waves-effect waves-green btn-flat">Create Project</button>
+        </div>
+    </form>
+</div>
+
+<div class="add-btn">
+    <a data-target="new-project-modal" class="btn-floating btn-large waves-effect waves-light red add-btn modal-trigger"
+        id="add-project"><i class="material-icons">add</i></a>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="/javascript/projects.js"></script>

@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    color:white;
 }
 
 .brand-logo {
@@ -8,7 +7,7 @@
 }
 
 body {
-    background-image: url(../../assets/images/mixer-background.jpg);
+    background-image: url("../assets/images/musical-note-background.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -26,8 +25,7 @@ body {
     padding: 20px !important;
     background-color: white;
     border-radius: 15px;
-    width: 40% !important;
-    margin: auto !important;
+    margin: auto;
 }
 
 .modal {
@@ -37,4 +35,53 @@ body {
 
 #modal1 {
     transform: translateY(50%) scaleX(1) !important;
+}
+
+.bottom-sheet {
+    transform: translateY(-50%) scaleX(1) !important;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    /* center horizontally */
+    align-items: center;
+    /* center vertically */
+}
+
+.add-btn {
+    display:flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+
+}
+
+.audio {
+    width: 100%;
+    object-fit: scale-down;
+}
+
+.add-song-form {
+    margin-top: 200px !important;
+}
+
+.row {
+    margin-bottom: 0px !important;
+}
+
+@media (max-width: 767.98px) {
+    .hero {
+        padding-top: 0px;
+    }
+    .hero h2 {
+        font-size: 10vw;
+    }
+    .container {
+        text-align: center;
+    }
+    .brand-logo {
+        padding-left: 0px !important;
+    }
 }

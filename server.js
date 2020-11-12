@@ -34,7 +34,6 @@ app.use(session(sess));
 
 //make styles and html available to server
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());

@@ -1,8 +1,9 @@
 const router = require('express').Router();
+const withAuth = require('../utils/auth');
 const { Project, User, Comment } = require('../models');
 
 // Get all projects
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
     Project.findAll({
         where: {
           user_id: req.session.user_id
@@ -36,8 +37,8 @@ router.get('/', (req, res) => {
         });
 });
   
-router.get('/create-project', (req, res) => {
+router.get('/create-project', withAuth, (req, res) => {
     res.render('create-project', {loggedIn: req.session.loggedIn});
 });
-  
+
 module.exports = router;
