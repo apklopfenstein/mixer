@@ -8,10 +8,8 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'name'
-        ],
-        
-    }, 
-    )
+        ]
+    })
     .then(dbProjectData => res.json(dbProjectData))
     .catch(err => {
         console.log(err);
@@ -33,9 +31,6 @@ router.get('/:id', (req, res) => {
             {
                 model: User,
                 attributes: ['username']
-            },
-            {
-                model: Song
             }
         ]
     })

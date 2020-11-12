@@ -46,6 +46,8 @@ router.get('/', (req, res) => {
 
 // One project
 router.get('/:id', (req, res) => {
+    console.log(req.params);
+
     Project.findOne({
         where: {
             id: req.params.id
@@ -89,6 +91,10 @@ router.get('/:id', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     });
+});
+
+router.get('/:id/new-song', (req, res) => {
+    res.render('newsong', { projectId: req.params.id });
 });
 
 module.exports = router;

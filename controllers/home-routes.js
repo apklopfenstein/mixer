@@ -11,10 +11,6 @@ router.get('/', (req, res) => {
     res.render('homepage', data);
 })
 
-router.get('/newsong', (req, res) => {
-    res.render('newsong')
-})
-
 //all songs in a given project
 router.get('/project-select', (req, res) => {
     Song.findAll({

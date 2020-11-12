@@ -1,5 +1,15 @@
+<nav>
+    <div class="nav-wrapper light-blue">
+        <a href="/" class="brand-logo">Mixr</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/api/users/logout" type="click">logout</a></li>
+        </ul>
+    </div>
+</nav>
+
 <div class="container">
     <form class="col s6 new_form" method="POST" action="/api/songs" enctype="multipart/form-data">
+        <input type="hidden" name="projectId" value="{{ projectId }}" />
     
         <div class="row">
             <div class="input-field col s12">
