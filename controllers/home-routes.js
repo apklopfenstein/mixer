@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         data.error = req.query.error;
     }
 
-    res.render('homepage', {data});
+    res.render('homepage', data);
 })
 
 //All songs in a project
