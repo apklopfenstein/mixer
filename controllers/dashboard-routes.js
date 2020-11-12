@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
-const { Project, User, Comment } = require('../models');
+const { Project, User } = require('../models');
 
 // Get all projects
 router.get('/', withAuth, (req, res) => {
@@ -13,14 +13,6 @@ router.get('/', withAuth, (req, res) => {
           'name'
         ],
         include: [
-          {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'project_id', 'user_id'],
-            include: {
-              model: User,
-              attributes: ['username']
-            }
-          },
           {
             model: User,
             attributes: ['username']
