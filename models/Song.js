@@ -29,10 +29,11 @@ Song.init (
         song_url: {
             type: DataTypes.STRING
         },
-        s3_object_key: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
+        //problem area!!
+        // s3_object_key: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false
+        // }
     },
     {
         sequelize,

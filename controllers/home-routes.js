@@ -2,13 +2,15 @@ const router = require('express').Router();
 const { Project, User, Comment, Song } = require('../models');
 
 router.get('/', (req, res) => {
-    const data = {};
+    const data = { 
+        loggedIn: req.session.loggedIn
+    };
 
     if (req.query.error) {
         data.error = req.query.error;
     }
 
-    res.render('homepage', data);
+    res.render('homepage', {data});
 })
 
 //all songs in a given project

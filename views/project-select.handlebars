@@ -4,8 +4,8 @@
     <div class="nav-wrapper light-blue">
         <a href="/" class="brand-logo">Mixr</a>
         <ul class="right hide-on-med-and-down">
-            <li>Logout</li>
             <li><a href="/projects">My Projects</a></li>
+            <li><a href="/api/users/logout" type="click">logout</a></li>
         </ul>
     </div>
 </nav>
@@ -20,7 +20,8 @@
 
 <section id="projectTest">
     <div class="col s1 m1 l1 valign-wrapper btn-wrapper">
-        <a class="btn-floating btn-large waves-effect waves-light red add-btn" href="/projects/{{ project.id }}/new-song">
+        <a class="btn-floating btn-large waves-effect waves-light red add-btn"
+            href="/projects/{{ project.id }}/new-song">
             <i class="material-icons">add</i>
         </a>
     </div>
@@ -33,13 +34,17 @@
                     <div class="card-content black-text">
                         <span class="card-title">{{this.title}}</span>
                         <p>{{this.description}} </p>
-                        <p><a href="{{this.song_url}}">listen</a></p>
+                        <audio controls>
+                            <source src={{this.song_url}} type="audio/ogg">
+                        </audio>
                     </div>
-
+                    <div class="card-action left-align">
+                        <button class="delete-song" id="song-{{this.id}}">delete</button>
+                    </div>
                     <div class="card-action right-align">
                         <a data-target="modal-detail" class="modal-trigger">Details</a>
                     </div>
-<!--modal-->
+                    <!--modal-->
                     <div id="modal-detail" class="modal modal-detail">
                         <div class="modal-content">
                             <div class="row">

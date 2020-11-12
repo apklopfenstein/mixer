@@ -8,7 +8,12 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'name'
-        ]
+        ],
+        include: {
+            model: Song,
+            attributes: ['title']
+
+        }
     })
     .then(dbProjectData => res.json(dbProjectData))
     .catch(err => {

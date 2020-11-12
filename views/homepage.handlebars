@@ -4,7 +4,12 @@
 <nav>
     <div class="nav-wrapper light-blue">
         <a href="/" class="brand-logo">Mixr</a>
-
+        {{#if data.loggedIn}}
+        <ul class="right hide-on-med-and-down">  
+            <li><a href="/projects">My Projects</a></li>
+            <li><a href="/api/users/logout" type="click">logout</a></li>
+        </ul>
+        {{/if}}
     </div>
 </nav>
 

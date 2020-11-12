@@ -1,6 +1,11 @@
 # echo
+<!--MAIN ISSUES-->
+can't recall mp3's from aws to render to songs page
+in Song.js lines 32-35 the s3 key causes error and songs page to not load
+make sure it works on heroku
+seed file
+responsiveness
 
-create user not working
 
 <!-- homepage -->
 
@@ -8,9 +13,6 @@ create user not working
 <!-- projects page -->
 -clean up projects card
 
--take off link on title, leave 'details' anchor button
-
--
 
 
 ('add member' button functionality and add to db   
@@ -26,7 +28,7 @@ redirect to empty projects page)
 
 
  <!-- project-select page (songs page) -->
--bring up songs according to project using handlebars
+
 -make songs clickable, bring up modal?
 
   (make song card editable:
@@ -37,16 +39,15 @@ redirect to empty projects page)
      delete from db)
 
 
-Claire
+
 <!-- newsong page -->
 
 design stuff 
 
-    redirect to projects page res.redirect
-  
+    
 
 
-    <!-- design and cleanup -->
+   <!-- design and cleanup -->
 
 
     seed file
