@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         });
 });
 
-//one song
+// One song
 router.get('/:id', (req, res) => {
     Song.findOne({
         where: {
@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
         });
 })
 
-//create song
+// Create song
 router.post('/', (req, res) => {    
     const s3 = new S3();
     const params = {
@@ -72,7 +72,7 @@ router.post('/', (req, res) => {
     });
 })
 
-//delete song
+// Delete song
 router.delete('/:id', (req, res) => {
     Song.destroy({
         where: {

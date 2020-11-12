@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     res.render('homepage', {data});
 })
 
-//all songs in a given project
+//All songs in a project
 router.get('/project-select', (req, res) => {
     Song.findAll({
         where: {
@@ -31,6 +31,5 @@ router.get('/project-select', (req, res) => {
             res.status(500).json(err);
         });
 })
-
 
 module.exports = router;
