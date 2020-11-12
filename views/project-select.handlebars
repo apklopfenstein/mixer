@@ -19,13 +19,8 @@
 
 
 <section id="projectTest">
-    <div class="col s1 m1 l1 valign-wrapper btn-wrapper">
-        <a class="btn-floating btn-large waves-effect waves-light red add-btn"
-            href="/projects/{{ project.id }}/new-song">
-            <i class="material-icons">add</i>
-        </a>
-    </div>
-<!--dynamically created songs-->
+
+    <!--dynamically created songs-->
     {{#each project.songs}}
     <div class="row">
         <div class="card">
@@ -34,14 +29,13 @@
                     <div class="card-content black-text">
                         <span class="card-title">{{this.title}}</span>
                         <p>{{this.description}} </p>
-                        <audio controls>
-                            <source src={{this.song_url}} type="audio/ogg">
-                        </audio>
-                    </div>
-                    <div class="card-action left-align">
-                        <button class="delete-song" id="song-{{this.id}}">delete</button>
-                    </div>
+                            <audio class="audio" controls>
+                                <source src={{this.song_url}} type="audio/ogg">
+                            </audio>
+                        </div>
+
                     <div class="card-action right-align">
+                        <a class="delete-song left" id="song-{{this.id}}">delete</a>
                         <a data-target="modal-detail" class="modal-trigger">Details</a>
                     </div>
                     <!--modal-->
@@ -80,7 +74,15 @@
             </div>
         </div>
         {{/each}}
+
+    <div class="add-btn">
+        <a class="btn-floating btn-large waves-effect waves-light red add-btn"
+            href="/projects/{{ project.id }}/new-song">
+            <i class="material-icons">add</i>
+        </a>
     </div>
+    
+
 </section>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

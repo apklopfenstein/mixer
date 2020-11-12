@@ -29,3 +29,11 @@ async function deleteProjectDb(projectID) {
         alert(response.statusText);
     }
 }
+
+function validateForm() {
+    var x = document.forms["project-form"]["project-name"].value;
+    if (x == "") {
+      alert("Project name must be filled out");
+      return false;
+    }
+  }

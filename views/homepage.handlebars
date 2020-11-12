@@ -1,11 +1,10 @@
 <!-- <h1>{{ title }} </h1> -->
-<link rel="stylesheet" href="../public/stylesheets/secondary-style.css">
 
 <nav>
     <div class="nav-wrapper light-blue">
         <a href="/" class="brand-logo">Mixr</a>
         {{#if data.loggedIn}}
-        <ul class="right hide-on-med-and-down">  
+        <ul class="right hide-on-med-and-down">
             <li><a href="/projects">My Projects</a></li>
             <li><a href="/api/users/logout" type="click">logout</a></li>
         </ul>
@@ -13,73 +12,84 @@
     </div>
 </nav>
 
-<section class="row hero valign-wrapper">
-    <div class="col s4 right-align">
-        <h2>Collaborate and manage your musical projects!</h2>
-    </div>
-    <form method="POST" action="/api/users" class="col s6 new_form">
-        <div class="row">
-            <div class="input-field col s12">
-                <input name="email" id="newemail" type="text" class="validate">
-                <label for="email">Email</label>
+<section>
+    <div class="container">
+        <div class="row hero">
+            <div class="col s12 m6">
+                <h2>Collaborate and manage your musical projects!</h2>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input name="username" id="newusername" type="text" class="validate">
-                <label for="username">Username</label>
-            </div>
-        </div>
+            <div class="col s12 m6 new_form">
+                <form method="POST" action="/api/users">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="username" id="newusername" type="text" class="validate">
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
 
-        <div class="row">
-            <div class="input-field col s12">
-                <input name="password" id="newpassword" type="password" class="validate">
-                <label for="password">Password</label>
-            </div>
-        </div>
-        <div class="row valign-wrapper">
-            <div class="col s4"><a data-target="modal1" class="modal-trigger">Existing User</a></div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="password" id="newpassword" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="email" id="newemail" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row valign-wrapper">
+                        <div class="col s6"><a data-target="modal1" class="modal-trigger">Existing User</a></div>
 
-            <div class="col s6 offset-s4 left">
-                <button class="btn waves-effect waves-light right" type="submit" name="action">Create Account
-                </button>
+                        <div class="col s6 right">
+                            <button class="btn waves-effect waves-light right" type="submit" name="action">Create
+                                Account
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </div>
-    </form>
 
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-        <form method="POST" action="/api/users/login">
-            <div class="modal-content">
-                <div class="input-field row">
-                    <input name="username" id="username" type="text" class="validate">
-                    <label for="username">Username</label>
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <form method="POST" action="/api/users/login">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input name="username" id="username" type="text" class="validate">
+                                <label for="username">Username</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input name="password" id="password" type="password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                        <button type="submit" class="modal-close waves-effect waves-green btn-flat">Login</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Error Modal -->
+            {{#if error}}
+            <div id="error-modal" class="modal">
+                <div class="modal-content">
+                    <h4>Error</h4>
+                    <p>
+                        {{ error }}
+                    </p>
                 </div>
-                <div class="input-field row">
-                    <input name="password" id="password" type="text" class="validate">
-                    <label for="password">Password</label>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Okay</a>
                 </div>
             </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                <button type="submit" class="modal-close waves-effect waves-green btn-flat">Login</button>
-            </div>
-        </form>
-    </div>
-    <!-- Error Modal -->
-    {{#if error}}
-    <div id="error-modal" class="modal">
-        <div class="modal-content">
-            <h4>Error</h4>
-            <p>
-                {{ error }}
-            </p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Okay</a>
+            {{/if}}
         </div>
     </div>
-    {{/if}}
 </section>
 
 

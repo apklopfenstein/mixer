@@ -7,8 +7,8 @@
     </div>
 </nav>
 
-<div class="container">
-    <form class="col s6 new_form" method="POST" action="/api/songs" enctype="multipart/form-data">
+<div class="container add-song-form">
+    <form class="new_form" method="POST" action="/api/songs" enctype="multipart/form-data">
         <input type="hidden" name="projectId" value="{{ projectId }}" />
     
         <div class="row">
@@ -29,10 +29,10 @@
                 <input id="song" name="song" type="file" class="validate">
             </div>
         </div>
-        <div class="row valign-wrapper">
-            <div class="col s2 offset-s8 right">
-                <button class="btn waves-effect waves-light right" href="/projects">Cancel
-                </button>
+        <div class="row">
+            <div class="col s2">
+                <a class="btn waves-effect waves-light " href="/projects/{{ projectId }}">Cancel
+                </a>
     
             </div>
             <div class="col s2 right">
