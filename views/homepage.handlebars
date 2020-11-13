@@ -1,6 +1,6 @@
 <nav>
-    <div class="nav-wrapper light-blue">
-        <a href="/" class="brand-logo">Mixr</a>
+    <div class="nav-wrapper black">
+        <a href="/" class="tape"><img src="../assets/images/small-tape.png"></a>
         {{#if loggedIn}}
         <ul class="right hide-on-med-and-down">
             <li><a href="/projects">My Projects</a></li>
@@ -17,7 +17,7 @@
                 <h2>Collaborate and manage your musical projects!</h2>
             </div>
             <div class="col s12 m6 new_form">
-                <form method="POST" action="/api/users">
+                <form method="POST" action="/api/users" class="sign-in-form">
                     <div class="row">
                         <div class="input-field col s12">
                             <input name="username" id="newusername" type="text" class="validate">
@@ -39,7 +39,7 @@
                     <div class="row valign-wrapper">
                         <div class="col s6"><a data-target="modal1" class="modal-trigger">Existing User</a></div>
                         <div class="col s6 right">
-                            <button class="btn waves-effect waves-light right" type="submit" name="action">Create
+                            <button class="btn waves-effect waves-light right create-btn" type="submit" name="action">Create
                                 Account
                             </button>
                         </div>
@@ -65,8 +65,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                        <button type="submit" class="modal-close waves-effect waves-green btn-flat">Login</button>
+                        <a href="#!" class="modal-close waves-effect waves btn-flat">Cancel</a>
+                        <button type="submit" class="modal-close waves-effect waves btn-flat">Login</button>
                     </div>
                 </form>
             </div>
@@ -80,7 +80,7 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Okay</a>
+                    <a href="#!" class="modal-close waves-effect waves btn-flat">Okay</a>
                 </div>
             </div>
             {{/if}}
