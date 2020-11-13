@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Song, Project, Comment } = require('../../models');
+const { Song, Project } = require('../../models');
 const S3 = require('aws-sdk/clients/s3');
 
 
@@ -24,14 +24,6 @@ router.get('/:id', (req, res) => {
             {
                 model: Project,
                 attributes: ['id', 'name']
-            },
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'project_id', 'user_id'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
             },
             {
                 model: User,
@@ -85,6 +77,5 @@ router.delete('/:id', (req, res) => {
             res.status(400).json(err);
         });
 })
-
 
 module.exports = router

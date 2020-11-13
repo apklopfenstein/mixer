@@ -55,3 +55,7 @@ if (title && description) {
   }  
 
 }
+
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+});

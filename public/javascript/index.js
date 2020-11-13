@@ -3,3 +3,7 @@ $(function () {
 
     $('#error-modal').modal('open');
 });
+
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });

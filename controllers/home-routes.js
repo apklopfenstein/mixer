@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User, Comment, Song } = require('../models');
+const { Song } = require('../models');
 
 router.get('/', (req, res) => {
     const data = { 
