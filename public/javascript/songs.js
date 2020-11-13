@@ -8,11 +8,9 @@ $(".delete-song").on("click", function () {
     var fullId = $(this).attr("id").split("-")
     var songID = fullId[1]
 
-    let songDelConfirm = confirm("are you sure you want to delete this song?");
-    if (songDelConfirm) {
-        deleteSongDb(songID);
-        window.location.reload()
-    }
+    deleteSongDb(songID);
+    window.location.reload()
+
 })
 
 //deletes song from db via api

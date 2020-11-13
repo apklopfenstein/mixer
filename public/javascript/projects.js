@@ -6,11 +6,9 @@ $(".delete-project").on("click", function () {
     var fullId = $(this).attr("id").split("-")
     var projectID = fullId[1]
 
-    let projectDelConfirm = confirm("are you sure you want to delete this project?");
-    if (projectDelConfirm) {
-        deleteProjectDb(projectID);
-        window.location.reload()
-    }
+    deleteProjectDb(projectID);
+    window.location.reload()
+
 })
 
 async function deleteProjectDb(projectID) {
@@ -29,11 +27,3 @@ async function deleteProjectDb(projectID) {
         alert(response.statusText);
     }
 }
-
-function validateForm() {
-    var x = document.forms["project-form"]["project-name"].value;
-    if (x == "") {
-      alert("Project name must be filled out");
-      return false;
-    }
-  }
