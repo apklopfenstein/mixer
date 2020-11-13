@@ -12,10 +12,8 @@ $(".delete-project").on("click", function () {
 })
 
 async function deleteProjectDb(projectID) {
-
     const response = await fetch(`/api/projects/${projectID}`, {
         method: 'DELETE',
-
         headers: {
             'Content-Type': 'application/json'
         }
