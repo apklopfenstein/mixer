@@ -30,7 +30,3 @@ async function deleteSongDb(songID) {
         alert(response.statusText);
     }
 }
-
-$(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
