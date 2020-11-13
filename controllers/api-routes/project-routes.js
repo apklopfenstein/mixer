@@ -1,27 +1,19 @@
 const router = require('express').Router();
-const { Project, User, Comment } = require('../../models');
+const { Project, User, Song } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-// Get all projects
+// All projects
 router.get('/', (req, res) => {
     Project.findAll({
         attributes: [
             'id',
             'name'
         ],
-        include: [
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'project_id', 'user_id'],
-                include: {
-                  model: User,
-                  attributes: ['username']
-                }
-            },
-            {
-                model: User,
-                attributes: ['username']
-            }
-        ]
+        include: {
+            model: Song,
+            attributes: ['title']
+
+        }
     })
     .then(dbProjectData => res.json(dbProjectData))
     .catch(err => {
@@ -30,7 +22,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// Get single project
+// Single project
 router.get('/:id', (req, res) => {
     Project.findOne({
         where: {
@@ -60,17 +52,31 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// Create a project
-router.post('/', (req, res) => {
+// Create project
+router.post('/', withAuth, (req, res) => {
     Project.create({
         name: req.body.name,
         user_id: req.session.user_id
     })
-    .then(dbProjectData => res.json(dbProjectData))
+    .then(dbProjectData => res.redirect('/projects'))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
 });
+
+// Delete project
+router.delete('/:id', (req, res) => {
+    Project.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(dbProjectData => res.json(dbProjectData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+})
 
 module.exports = router;

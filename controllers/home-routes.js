@@ -1,94 +1,35 @@
 const router = require('express').Router();
-const { Project, User, Comment } = require('../models');
+const { Project, User, Comment, Song } = require('../models');
 
-// All projects
 router.get('/', (req, res) => {
-    Project.findAll({
-        attributes: [
-            'id',
-            'name'
-        ],
-        include: [{
-            model: Comment,
-            attributes: ['id', 'comment_text', 'project_id', 'user_id'],
-            include: {
-                model: User,
-                attributes: ['username']
-            }
-        },
-        {
-            model: User,
-            attributes: ['username']
-        }
-    ]
-    })
-    .then(dbProjectData => {
-        const projects = dbProjectData.map(project => project.get({
-            plain: true
-        }));
-        res.render('homepage', {
-            projects,
-            loggedIn: req.session.loggedIn
-        });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
+    const data = { 
+        loggedIn: req.session.loggedIn
+    };
 
-// Login
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
+    if (req.query.error) {
+        data.error = req.query.error;
     }
 
-    res.render('login');
-});
+    res.render('homepage', {data});
+})
 
-// One project
-router.get('/project/:id', (req, res) => {
-    Project.findOne({
+//All songs in a project
+router.get('/project-select', (req, res) => {
+    Song.findAll({
         where: {
-            id: req.params.id
-        },
-        attributes: [
-            'id',
-            'name'
-        ],
-        include: [
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'project_id', 'user_id'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            },
-            {
-                model: User,
-                attributes: ['username']
-            }
-        ]
-    })
-    .then(dbProjectData => {
-        if(!dbProjectData) {
-            res.status(404).json({ message: 'No project found with this id '});
-            return;
+            project_id: 1
         }
-
-        const project = dbProjectData.get({ plain: true });
-
-        res.render('single-project', {
-            project,
-            loggedIn: req.session.loggedIn
-        });
     })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
+        .then(dbSongData => {
+            const songs = dbSongData.map(song => song.get({
+                plain: true
+            }));
+            res.render('project-select', {songs})
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+})
 
 module.exports = router;

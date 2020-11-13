@@ -1,0 +1,44 @@
+<nav>
+    <div class="nav-wrapper light-blue">
+        <a href="/" class="brand-logo">Mixr</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/api/users/logout" type="click">logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container add-song-form">
+    <form class="new_form" method="POST" action="/api/songs" enctype="multipart/form-data">
+        <input type="hidden" name="projectId" value="{{ projectId }}">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="title" name="title" type="text" class="validate">
+                <label for="title">Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="description" name="description" type="text" class="validate">
+                <label for="description">Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="song" name="song" type="file" class="validate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s2">
+                <a class="btn waves-effect waves-light" href="/projects/{{ projectId }}">Cancel</a>
+            </div>
+            <div class="col s2 right">
+                <button class="btn waves-effect waves-light right" id="newSong-btn" type="submit" name="action">Add New Song
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="javascript/newsong.js"></script>

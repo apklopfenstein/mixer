@@ -1,5 +1,7 @@
-$(document).ready(function () {
-    $('.modal').modal();
+$(function () {
+    $(".modal").modal();
+
+    $('#error-modal').modal('open');
 });
 
 
