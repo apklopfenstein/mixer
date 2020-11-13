@@ -71,6 +71,10 @@ body {
     margin-bottom: 0px !important;
 }
 
+.no-create {
+    color: rgb(211, 177, 174);
+}
+
 @media (max-width: 767.98px) {
     .hero {
         padding-top: 0px;
