@@ -1,10 +1,10 @@
 <nav>
     <div class="nav-wrapper light-blue">
         <a href="/" class="brand-logo">Mixr</a>
-        {{#if data.loggedIn}}
+        {{#if loggedIn}}
         <ul class="right hide-on-med-and-down">
             <li><a href="/projects">My Projects</a></li>
-            <li><a href="/api/users/logout" type="click">logout</a></li>
+            <li><a href="/api/users/logout" type="click">Logout</a></li>
         </ul>
         {{/if}}
     </div>
