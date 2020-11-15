@@ -132,13 +132,15 @@ label.active {
 
 /* Add Project/Song Button Styles */
 .add-btn {
+    background-color: #00FFEF !important;
+}
+
+.add-btn-div {
     display:flex;
     justify-content: center;
     position: sticky;
-    bottom: 0px;
     margin-bottom: 7px;
-    width: 100%;
-    background-color: #00FFEF !important;
+    margin-top: 7px;
 }
 
 .btn-floating i {
