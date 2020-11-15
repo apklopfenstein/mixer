@@ -186,4 +186,8 @@ label.active {
     .hero h2 {
         margin-top: 30px;
     }
+    .add-btn {
+        position: fixed;
+    }
+
 }
