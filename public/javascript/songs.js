@@ -1,4 +1,4 @@
-//brings up modal when 'details' is clicked
+//brings up modal when 'delete' is clicked
 $(() => {
     $('.modal').modal();
 });
@@ -15,10 +15,8 @@ $(".delete-song").on("click", function () {
 
 //deletes song from db via api
 async function deleteSongDb(songID) {
-
     const response = await fetch(`/api/songs/${songID}`, {
         method: 'DELETE',
-
         headers: {
             'Content-Type': 'application/json'
         }

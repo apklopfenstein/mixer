@@ -5,6 +5,7 @@ const homeRoutes = require('./home-routes');
 const dashboardRoutes = require('./dashboard-routes.js');
 const projectRoutes = require('./project-routes');
 
+//designates url prefixes and routes
 router.use('/api', apiRoutes);
 router.use('/', homeRoutes);
 router.use('/dashboard', dashboardRoutes);
