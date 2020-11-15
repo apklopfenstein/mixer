@@ -8,9 +8,18 @@ a {
 }
 
 a:hover {
-    color: #00FFEF;
+    color: #00FFEF !important;
 }
 
+button:hover {
+    color: #00FFEF !important;
+}
+
+.btn-flat {
+    color: #AAA !important;
+}
+
+/* Landing Page Styles */
 img {
     padding-left: 30px !important;
     margin-top: 30px !important;
@@ -31,11 +40,10 @@ body {
 
 .hero h2 {
     font-family: 'Permanent Marker', cursive;
-    color: #aaa;
-    margin-top: 75px;
+    color: #AAA ;
 }
 
-.new_form{
+.sign-in-form {
     border: 1px black solid;
     padding: 20px !important;
     background: rgba(102, 102, 102, 0.7);
@@ -52,11 +60,11 @@ label.active {
     color: #00FFEF !important;
 }
 
-.create-btn {
-    background-color: #00FFEF;
+.create-btn:hover {
     color: #666666;
 }
 
+/* Sign In Modal Styles */
 .modal, .modal-footer {
     color: black !important;
     background-color:  #666666 !important;
@@ -64,6 +72,30 @@ label.active {
 
 #modal1 {
     transform: translateY(50%) scaleX(1) !important;
+}
+
+/* All Projects/Song Page Styles */
+.projects, .songs {
+    font-family: 'Permanent Marker', cursive;
+    color: #AAA;
+    padding-top: 20px;
+}
+
+.card-content, .card-action {
+    background-color: #666666 !important;
+    color: white !important;
+}
+
+.card-action a {
+    color: #AAA !important;
+}
+
+.card-action a:hover {
+    color: #00FFEF !important;
+}
+
+.delete-confirm {
+    color: white !important;
 }
 
 .bottom-sheet {
@@ -78,46 +110,74 @@ label.active {
     /* center vertically */
 }
 
+.row {
+    margin-bottom: 0px !important;
+}
+
+.row-length {
+    max-width: 1800px;
+}
+
+.audio {
+    width: 100%;
+    object-fit: scale-down;
+    margin-top: 10px;
+}
+
+/* No Project/Song Created Message Styles */
+.no-create {
+    color: white;
+    font-size: 16px;
+}
+
+/* Add Project/Song Button Styles */
 .add-btn {
     display:flex;
     justify-content: center;
     position: absolute;
     bottom: 20px;
     width: 100%;
-
+    background-color: #00FFEF !important;
 }
 
-.audio {
-    width: 100%;
-    object-fit: scale-down;
+.btn-floating i {
+    color: #666;
 }
 
-.add-song-form {
-    margin-top: 200px !important;
-}
-
-.row {
-    margin-bottom: 0px !important;
-}
-
-.no-create {
-    color: rgb(211, 177, 174);
-}
-
-@media (max-width: 767.98px) {
-    .brand-logo {
-   
+@media (max-width: 1382px) {
+    .hero h2 {
+        margin-top: 10px;
     }
+}
+
+/* Responsiveness */
+@media (max-width: 786px) {
+    .hero h2 {
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 767px) {
     .hero {
-        padding-top: 0px;
+        padding-top: 150px;
     }
     .hero h2 {
-        font-size: 10vw;
+        font-size: 35px;
+        padding-top: 30px;
     }
     .container {
         text-align: center;
     }
     .brand-logo {
         padding-left: 0px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        padding-top: 0px;
+    }
+    .hero h2 {
+        margin-top: 30px;
     }
 }

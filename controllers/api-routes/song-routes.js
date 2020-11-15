@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Song, Project } = require('../../models');
 const S3 = require('aws-sdk/clients/s3');
 
-
 // All songs
 router.get('/', (req, res) => {
     Song.findAll({

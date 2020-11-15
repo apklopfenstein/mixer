@@ -1,6 +1,6 @@
 <nav>
-    <div class="nav-wrapper light-blue">
-        <a href="/" class="brand-logo left">Mixr</a>
+    <div class="nav-wrapper black">
+        <a href="/" class="tape"><img src="/assets/images/small-tape.png"></a>
         <ul class="right">
             <li><a href="/projects">My Projects</a></li>
             <li><a href="/api/users/logout" type="click">Logout</a></li>
@@ -8,22 +8,23 @@
     </div>
 </nav>
 
+<!-- Project Name -->
 <section>
     <div class="row">
-        <h2 class="white-text center">{{project.name}}</h2>
+        <h2 class="songs center">{{project.name}}</h2>
     </div>
 </section>
 
+<!-- Song List -->
 <section id="projectTest">
-    <!--dynamically created songs-->
     {{#each project.songs}}
-    <div class="row">
+    <div class="row row-length">
         <div class="card">
             <div class="col s12 m6 l4">
                 <div class="card grey lighten-3">
                     <div class="card-content black-text">
                         <span class="card-title title">{{this.title}}</span>
-                        <p>{{this.description}} </p>
+                        <p class="song-desc">{{this.description}}</p>
                         <audio class="audio" controls>
                             <source src={{this.song_url}} type="audio/ogg">
                         </audio>
@@ -33,17 +34,15 @@
                         <div class="modal" id="delete-modal-{{this.id}}">
                             <div class="modal-content">
                                 <div class="row">
-                                    <div class="input-field col s12">
-                                        <p>Are you sure you want to delete this Song?</p>
+                                    <div class="delete-confirm input-field col s12">
+                                        <p>Are you sure you want to delete this song?</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button class="modal-close waves-effect waves-green btn-flat ">Cancel</button>
-                                <button type="submit"
-                                    class="modal-close waves-effect waves-green btn-flat delete-song"
+                                <button class="modal-close waves-effect waves btn-flat">Cancel</button>
+                                <button type="submit" class="modal-close waves-effect waves btn-flat delete-song"
                                     id="project-{{this.id}}">Confirm</button>
-
                             </div>
                         </div>
                     </div>
@@ -51,16 +50,55 @@
             </div>
         </div>
         {{else}}
-    <h2 class="no-create center">No songs have been created yet.</h2>
+        <h2 class="no-create center">No songs have been created yet.</h2>
         {{/each}}
-
-        <div class="add-btn">
-            <a class="btn-floating btn-large waves-effect waves-light red add-btn"
-                href="/projects/{{ project.id }}/new-song">
-                <i class="material-icons">add</i>
-            </a>
-        </div>
 </section>
+
+<!-- New Song Modal -->
+<div id="new-song-modal" class="modal">
+    <form name="new-song-form" method="POST" action="/api/songs" enctype="multipart/form-data">
+        <div class="modal-content">
+            <input type="hidden" name="projectId" value="{{ project.id }}">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="title" name="title" type="text" class="validate">
+                    <label for="title">Title</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="description" name="description" type="text" class="validate">
+                    <label for="description">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="song" name="song" type="file" class="validate">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col s2">
+                    <a class="btn-flat waves-effect waves-light left modal-close">Cancel</a>
+                </div>
+                <div class="col s2 right">
+                    <button class="btn-flat waves-effect waves-light right" id="new-song-btn" type="submit" name="action">Add
+                        New
+                        Song
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Add Song Button -->
+<div class="add-btn">
+    <a class="btn-floating btn-large waves-effect waves-light add-btn modal-trigger" data-target="new-song-modal">
+        <i class="material-icons">add</i>
+    </a>
+</div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

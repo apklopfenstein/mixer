@@ -3,5 +3,3 @@ $(function () {
 
     $('#error-modal').modal('open');
 });
-
-

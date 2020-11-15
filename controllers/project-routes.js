@@ -77,8 +77,4 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/:id/new-song', (req, res) => {
-    res.render('newsong', { projectId: req.params.id });
-});
-
 module.exports = router;

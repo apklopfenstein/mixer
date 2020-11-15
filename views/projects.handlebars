@@ -1,7 +1,7 @@
 <nav>
-    <div class="nav-wrapper light-blue">
+    <div class="nav-wrapper black">
         <div class="row">
-            <a href="/" class="brand-logo left">Mixr</a>
+            <a href="/" class="tape"><img src="/assets/images/small-tape.png"></a>
             <ul class="right ">
                 <li><a href="/api/users/logout" type="click">Logout</a></li>
             </ul>
@@ -11,16 +11,18 @@
     </div>
 </nav>
 
+<!-- Header -->
 <section>
     <div class="row">
-        <h2 class="white-text center">My Projects</h2>
+        <h2 class="projects center">My Projects</h2>
     </div>
 </section>
 
-<div class="row">
+<!-- Projet List -->
+<div class="row row-length">
     {{#each projects}}
     <div class="col s12 m6 l3">
-        <div class="card grey lighten-3">
+        <div class="card">
             <div class="card-content black-text">
                 <span class="card-title">{{ this.name }}</span>
             </div>
@@ -30,15 +32,14 @@
                     <div class="modal-content">
                         <div class="row">
                             <div class="input-field col s12">
-                                <p>Are you sure you want to delete this project?</p>
+                                <p class="delete-confirm">Are you sure you want to delete this project?</p>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="modal-close waves-effect waves-green btn-flat ">Cancel</button>
-                        <button type="submit" class="modal-close waves-effect waves-green btn-flat delete-project"
+                        <button class="modal-close waves-effect waves btn-flat ">Cancel</button>
+                        <button type="submit" class="modal-close waves-effect waves btn-flat delete-project"
                             id="project-{{this.id}}">Confirm</button>
-
                     </div>
                 </div>
                 <a class="right" href="/projects/{{ this.id }}">Details</a>
@@ -46,11 +47,11 @@
         </div>
     </div>
     {{else}}
-    <h2 class="no-create center">No projects have been created yet.</h2>
+    <p class="no-create center">No projects have been created yet.</p>
     {{/each}}
 </div>
 
-{{!-- New Project Modal --}}
+<!-- New Project Modal -->
 <div id="new-project-modal" class="modal">
     <form name="project-form" method="POST" action="/api/projects">
         <div class="modal-content">
@@ -61,13 +62,14 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="modal-close waves-effect waves-green btn-flat">Create Project</button>
+            <button type="submit" class="modal-close waves-effect waves btn-flat">Create Project</button>
         </div>
     </form>
 </div>
 
+<!-- Add Project Button -->
 <div class="add-btn">
-    <a data-target="new-project-modal" class="btn-floating btn-large waves-effect waves-light red add-btn modal-trigger"
+    <a data-target="new-project-modal" class="btn-floating btn-large waves-effect waves-light add-btn modal-trigger"
         id="add-project"><i class="material-icons">add</i></a>
 </div>
 
