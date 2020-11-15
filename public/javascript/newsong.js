@@ -1,7 +1,7 @@
 console.log("here");
 //go back to projects page
-$("#back-btn").on("click", ()=> {
-    $(location).attr("href", "/projects")
+$("#back-btn").on("click", () => {
+  $(location).attr("href", "/projects")
 })
 
 async function addSongDb (title, description) {
@@ -13,13 +13,13 @@ if (title && description) {
         title,
         description,
         project_id
-        
+
       }),
       headers: {
         'Content-Type': 'application/json'
       }
     });
-  
+
     if (response.ok) {
     console.log("success");    
     } else {
@@ -28,7 +28,3 @@ if (title && description) {
     }
   }  
 }
-
-$(document).ready(function(){
-  $('.sidenav').sidenav();
-});

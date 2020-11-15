@@ -1,9 +1,13 @@
 <nav>
     <div class="nav-wrapper light-blue">
-        <a href="/" class="brand-logo">Mixr</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="/api/users/logout" type="click">logout</a></li>
-        </ul>
+        <div class="row">
+            <a href="/" class="brand-logo left">Mixr</a>
+            <ul class="right ">
+                <li><a href="/api/users/logout" type="click">Logout</a></li>
+            </ul>
+        </div>
+
+
     </div>
 </nav>
 
@@ -21,7 +25,7 @@
                 <span class="card-title">{{ this.name }}</span>
             </div>
             <div class="card-action">
-                <a class="modal-trigger" data-target="delete-modal-{{this.id}}" >Delete</a>
+                <a class="modal-trigger" data-target="delete-modal-{{this.id}}">Delete</a>
                 <div class="modal" id="delete-modal-{{this.id}}">
                     <div class="modal-content">
                         <div class="row">
@@ -32,8 +36,9 @@
                     </div>
                     <div class="modal-footer">
                         <button class="modal-close waves-effect waves-green btn-flat ">Cancel</button>
-                        <button type="submit" class="modal-close waves-effect waves-green btn-flat delete-project" id="project-{{this.id}}">Confirm</button>
-                        
+                        <button type="submit" class="modal-close waves-effect waves-green btn-flat delete-project"
+                            id="project-{{this.id}}">Confirm</button>
+
                     </div>
                 </div>
                 <a class="right" href="/projects/{{ this.id }}">Details</a>

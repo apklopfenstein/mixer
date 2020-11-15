@@ -25,7 +25,3 @@ async function deleteProjectDb(projectID) {
         alert(response.statusText);
     }
 }
-
-$(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
