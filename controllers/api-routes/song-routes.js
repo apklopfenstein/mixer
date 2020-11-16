@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Song, Project } = require('../../models');
 const S3 = require('aws-sdk/clients/s3');
+const { v4: uuid } = require('uuid');
 
 // All songs
 router.get('/', (req, res) => {
@@ -38,22 +39,26 @@ router.get('/:id', (req, res) => {
 })
 
 // Create song
-router.post('/', (req, res) => {    
+router.post('/', (req, res) => {
     const s3 = new S3();
     const params = {
         ACL: 'public-read',
         Bucket: 'mixer-storage', 
-        Key: process.env.AWS_SECRET_ACCESS_KEY, 
+        Key: uuid(),
         Body: req.files.song.data
     };
+
     s3.upload(params, function(err, data) {
-        console.log(req);
+        if (err) {
+            throw err;
+        }
+
         Song.create({
             title: req.body.title,
             description: req.body.description,
             project_id: req.body.projectId,
             song_url: data.Location,
-            s3_object_key: data.key
+            s3_object_key: data.Key
         })
             .then(dbSongData => res.redirect('/projects/' + req.body.projectId))
             .catch(err => {
