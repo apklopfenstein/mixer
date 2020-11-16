@@ -102,10 +102,6 @@ label.active {
     color: white !important;
 }
 
-.bottom-sheet {
-    transform: translateY(-50%) scaleX(1) !important;
-}
-
 .container {
     display: flex;
     justify-content: center;
@@ -143,7 +139,7 @@ label.active {
     display:flex;
     justify-content: center;
     position: sticky;
-    margin-bottom: 7px;
+    margin-bottom: 20px;
     margin-top: 7px;
 }
 
@@ -178,9 +174,6 @@ label.active {
     .brand-logo {
         padding-left: 0px !important;
     }
-    .add-btn {
-        position: fixed;
-    }
 }
 
 @media (max-width: 600px) {
@@ -190,8 +183,4 @@ label.active {
     .hero h2 {
         margin-top: 30px;
     }
-    .add-btn {
-        position: fixed;
-    }
-
 }
