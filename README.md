@@ -1,4 +1,4 @@
-# Mixr
+# Mixer
 
 ## Purpose
 The purpose of Mixr is to give musicians a project management system to organize songs or clips into a specific project.
